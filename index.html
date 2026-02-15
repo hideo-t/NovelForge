@@ -133,6 +133,35 @@ nav.scrolled{background:rgba(9,9,15,.95);box-shadow:0 2px 20px rgba(0,0,0,.4)}
 .hero-stat-num{font-family:var(--mono);font-size:1.5rem;font-weight:700;color:var(--gold)}
 .hero-stat-label{font-size:.72rem;color:var(--text2);margin-top:2px;letter-spacing:.04em}
 
+/* ═══ HERO QUICK NAV ═══ */
+.hero-nav{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:8px;
+  margin-top:32px;max-width:520px;margin-left:auto;margin-right:auto;
+}
+.hero-nav a{
+  display:flex;flex-direction:column;align-items:center;gap:5px;
+  padding:14px 8px;border-radius:10px;text-decoration:none;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  transition:all .3s;
+}
+.hero-nav a:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.15);transform:translateY(-2px)}
+.hero-nav .hn-icon{font-size:1.3rem;line-height:1}
+.hero-nav .hn-label{font-size:.7rem;font-weight:600;color:var(--text2);letter-spacing:.02em;text-align:center}
+.hero-nav a:nth-child(1) .hn-icon{color:var(--gold)}
+.hero-nav a:nth-child(2) .hn-icon{color:#a78bfa}
+.hero-nav a:nth-child(3) .hn-icon{color:#5eead4}
+.hero-nav a:nth-child(4) .hn-icon{color:#60a5fa}
+.hero-nav a:nth-child(1):hover{border-color:rgba(212,168,83,.3);background:rgba(212,168,83,.06)}
+.hero-nav a:nth-child(2):hover{border-color:rgba(167,139,250,.3);background:rgba(167,139,250,.06)}
+.hero-nav a:nth-child(3):hover{border-color:rgba(94,234,212,.3);background:rgba(94,234,212,.06)}
+.hero-nav a:nth-child(4):hover{border-color:rgba(96,165,250,.3);background:rgba(96,165,250,.06)}
+@media(max-width:480px){
+  .hero-nav{gap:6px}
+  .hero-nav a{padding:12px 4px}
+  .hero-nav .hn-icon{font-size:1.1rem}
+  .hero-nav .hn-label{font-size:.58rem}
+}
+
 .hero-scroll{
   margin-top:48px;font-size:.68rem;color:var(--text3);letter-spacing:.15em;
   display:flex;flex-direction:column;align-items:center;gap:6px;
@@ -433,6 +462,24 @@ footer{
     <div class="hero-stat"><div class="hero-stat-num">9,800+</div><div class="hero-stat-label">行のコード</div></div>
     <div class="hero-stat"><div class="hero-stat-num">9</div><div class="hero-stat-label">統合モジュール</div></div>
     <div class="hero-stat"><div class="hero-stat-num">¥0</div><div class="hero-stat-label">ランニングコスト</div></div>
+  </div>
+  <div class="hero-nav">
+    <a href="enterprise/">
+      <span class="hn-icon">🏢</span>
+      <span class="hn-label">企業</span>
+    </a>
+    <a href="creators/">
+      <span class="hn-icon">✒️</span>
+      <span class="hn-label">個人</span>
+    </a>
+    <a href="education/">
+      <span class="hn-icon">🎓</span>
+      <span class="hn-label">公共・教育</span>
+    </a>
+    <a href="investors/">
+      <span class="hn-icon">💰</span>
+      <span class="hn-label">投資家</span>
+    </a>
   </div>
   <div class="hero-scroll">SCROLL</div>
 </section>
