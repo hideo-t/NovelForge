@@ -144,6 +144,64 @@ section{padding:100px 28px}
 .stitle{font-family:var(--serif);font-weight:700;font-size:clamp(1.4rem,3vw,2.1rem);line-height:1.35;margin-bottom:14px}
 .sdesc{color:var(--text2);max-width:540px;font-size:.95rem;margin-bottom:44px;line-height:1.9}
 
+/* ═══ PROBLEM ═══ */
+.problem{border-top:1px solid rgba(255,255,255,.03)}
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.pain-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-top:12px}
+.pain-item{display:flex;gap:10px;font-size:.9rem;line-height:1.7}
+.pain-icon{color:#e05050;font-weight:700;flex-shrink:0}
+.solution-box{
+  padding:24px;border-radius:12px;
+  background:var(--surface);border:1px solid rgba(255,255,255,.06);
+}
+.solution-box h3{font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--gold);margin-bottom:8px}
+.solution-box p{font-size:.88rem;color:var(--text2);margin-bottom:14px;line-height:1.8}
+.yaml-demo{
+  padding:16px;border-radius:8px;
+  background:rgba(0,0,0,.3);
+  font-family:var(--mono);font-size:.72rem;line-height:1.8;
+  white-space:pre;overflow-x:auto;color:var(--text2);
+}
+.yaml-demo .key{color:var(--gold)}
+.yaml-demo .val{color:#8ac;font-style:italic}
+
+/* ═══ CORE TECH ═══ */
+.coretech{background:var(--bg2);border-top:1px solid rgba(255,255,255,.03)}
+.ct-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.ct-card{
+  padding:24px 20px;border-radius:10px;
+  background:var(--surface);border:1px solid rgba(255,255,255,.05);
+  transition:all .3s;
+}
+.ct-card:hover{border-color:rgba(255,255,255,.1);transform:translateY(-2px)}
+.ct-icon{font-size:1.4rem;margin-bottom:8px;display:block}
+.ct-title{font-weight:600;font-size:.9rem;margin-bottom:4px}
+.ct-desc{font-size:.8rem;color:var(--text2);line-height:1.7}
+
+/* ═══ COMPARISON ═══ */
+.comparison{border-top:1px solid rgba(255,255,255,.03)}
+.comp-table{width:100%;border-collapse:collapse;margin-top:32px}
+.comp-table th,.comp-table td{
+  padding:12px 14px;text-align:center;border-bottom:1px solid rgba(255,255,255,.05);
+  font-size:.82rem;
+}
+.comp-table th{
+  font-size:.74rem;color:var(--text2);font-weight:600;padding-bottom:14px;
+  border-bottom:1px solid rgba(255,255,255,.1);letter-spacing:.04em;
+}
+.comp-table th.ours{color:var(--gold)}
+.comp-table td:first-child{text-align:left;color:var(--text2);font-size:.82rem;font-weight:500}
+.comp-table td.ours{background:rgba(212,168,83,.04)}
+.comp-table .check{color:var(--gold);font-weight:700}
+.comp-table .cross{color:var(--text3)}
+.comp-table .partial{color:var(--text2);font-size:.78rem}
+@media(max-width:900px){
+  .problem-grid{grid-template-columns:1fr}
+  .ct-grid{grid-template-columns:1fr}
+  .comp-table{font-size:.74rem}
+  .comp-table th,.comp-table td{padding:8px 6px}
+}
+
 /* ═══ WHAT IS ═══ */
 .what{background:var(--bg2);border-top:1px solid rgba(255,255,255,.03)}
 .what-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
@@ -377,6 +435,41 @@ footer{
 </section>
 
 <!-- ═══════════════════
+     PROBLEM
+     ═══════════════════ -->
+<section class="problem" id="problem">
+  <div class="container">
+    <div class="problem-grid">
+      <div class="reveal">
+        <div class="label">PROBLEM</div>
+        <div class="stitle">AI小説の現実は<br>手作業の連続</div>
+        <ul class="pain-list">
+          <li class="pain-item"><span class="pain-icon">✕</span><span>ChatGPTに章ごと依頼 → コピペ → 整形を手作業で繰り返す</span></li>
+          <li class="pain-item"><span class="pain-icon">✕</span><span>画像生成で毎回プロンプトを書き直し → キャラの顔がバラバラ</span></li>
+          <li class="pain-item"><span class="pain-icon">✕</span><span>長編になるとストーリーに矛盾が発生 → LLMは「忘れる」</span></li>
+          <li class="pain-item"><span class="pain-icon">✕</span><span>API課金が膨れ上がる → 長編シリーズの制作コストが読めない</span></li>
+          <li class="pain-item"><span class="pain-icon">✕</span><span>企業IP・キャラ設定を外部APIに送信 → 情報流出リスク</span></li>
+        </ul>
+      </div>
+      <div class="solution-box reveal d2">
+        <h3>→ 解決策：YAML 1ファイルで全自動</h3>
+        <p>世界観・キャラクター・章構成をYAMLに定義するだけ。テキスト生成、挿絵生成、HTMLリーダー構築、GitHub Pagesへの公開まで、すべて自動で実行されます。</p>
+        <div class="yaml-demo"><span class="key">title:</span> <span class="val">'57歳の冒険'</span>
+<span class="key">characters:</span>
+  - <span class="key">name:</span> <span class="val">'山田健太郎'</span>
+    <span class="key">age:</span> <span class="val">57</span>
+    <span class="key">sd_prompt_base:</span> <span class="val">>
+      1man, middle-aged, grey hair...</span>
+<span class="key">chapter_outlines:</span>
+  - <span class="key">chapter:</span> <span class="val">1</span>
+    <span class="key">title:</span> <span class="val">'新たな決意'</span>
+    <span class="key">key_scene:</span> <span class="val">'桜の公園での別れ'</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════
      WHAT IS
      ═══════════════════ -->
 <section class="what" id="about">
@@ -421,6 +514,50 @@ footer{
 </section>
 
 <!-- ═══════════════════
+     CORE TECHNOLOGY
+     ═══════════════════ -->
+<section class="coretech">
+  <div class="container">
+    <div class="reveal">
+      <div class="label">CORE TECHNOLOGY</div>
+      <div class="stitle">なぜ、このパイプラインが必要なのか</div>
+    </div>
+    <div class="ct-grid">
+      <div class="ct-card reveal">
+        <span class="ct-icon">🔒</span>
+        <div class="ct-title">完全ローカル実行</div>
+        <div class="ct-desc">外部APIにデータを送信しません。IPやキャラクター設定が社外に流出するリスクがゼロ。ランニングコストはPCの電気代のみ。</div>
+      </div>
+      <div class="ct-card reveal d1">
+        <span class="ct-icon">👤</span>
+        <div class="ct-title">キャラクター一貫性</div>
+        <div class="ct-desc">YAML設定のSD（Stable Diffusion）プロンプトが全章に自動適用。年齢・外見タグの自動補完で「57歳の主人公が10代に描かれる」破綻を防止。</div>
+      </div>
+      <div class="ct-card reveal d2">
+        <span class="ct-icon">🧠</span>
+        <div class="ct-title">長編記憶管理</div>
+        <div class="ct-desc">伏線の設置・回収、キャラ状態変化をJSONで追跡。数十話の連載でもストーリーの整合性を維持。前章要約の自動引き継ぎ。</div>
+      </div>
+      <div class="ct-card reveal">
+        <span class="ct-icon">🛡️</span>
+        <div class="ct-title">品質自動制御</div>
+        <div class="ct-desc">LLMの繰り返しループを自動検出・修復。多言語モデルでの言語混在（日→中の突然の切り替え）も自動除去。リトライ付き。</div>
+      </div>
+      <div class="ct-card reveal d1">
+        <span class="ct-icon">🔄</span>
+        <div class="ct-title">続編自動生成</div>
+        <div class="ct-desc">完成作品を読み込み、LLMが要約→続編YAMLを自動生成。シリーズ展開がワンクリック。Web UIから前作を選ぶだけ。</div>
+      </div>
+      <div class="ct-card reveal d2">
+        <span class="ct-icon">🎙️</span>
+        <div class="ct-title">TTS読み上げ対応</div>
+        <div class="ct-desc">生成されるHTMLリーダーはWeb Speech API対応。iPhone Safari、Android Chrome、デスクトップブラウザで読み上げ可能。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════
      PIPELINE
      ═══════════════════ -->
 <section class="pipeline">
@@ -441,6 +578,80 @@ footer{
       <span class="pipe-arrow">→</span>
       <div class="pipe-step"><span class="pipe-icon">🌐</span><div class="pipe-label">自動公開</div><div class="pipe-sub">GitHub Pages</div></div>
     </div>
+  </div>
+</section>
+
+<!-- ═══════════════════
+     COMPARISON
+     ═══════════════════ -->
+<section class="comparison" id="comparison">
+  <div class="container">
+    <div class="reveal">
+      <div class="label">COMPARISON</div>
+      <div class="stitle">既存ツールとの比較</div>
+    </div>
+    <table class="comp-table reveal">
+      <thead>
+        <tr>
+          <th></th>
+          <th class="ours">NovelForge</th>
+          <th>NovelAI</th>
+          <th>ChatGPT + DALL-E</th>
+          <th>一般的なAI執筆ツール</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>テキスト＋画像＋公開の一貫自動化</td>
+          <td class="ours"><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+        </tr>
+        <tr>
+          <td>完全ローカル（API課金なし）</td>
+          <td class="ours"><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+        </tr>
+        <tr>
+          <td>キャラ外見の章間一貫性</td>
+          <td class="ours"><span class="check">✓ 自動</span></td>
+          <td><span class="partial">△ 手動</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+        </tr>
+        <tr>
+          <td>長編の整合性維持</td>
+          <td class="ours"><span class="check">✓ 記憶管理</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="partial">△ 手動</span></td>
+          <td><span class="partial">△</span></td>
+        </tr>
+        <tr>
+          <td>品質自動制御</td>
+          <td class="ours"><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+        </tr>
+        <tr>
+          <td>続編自動生成</td>
+          <td class="ours"><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+        </tr>
+        <tr>
+          <td>IPデータの外部送信</td>
+          <td class="ours"><span class="check">なし</span></td>
+          <td><span class="cross">あり</span></td>
+          <td><span class="cross">あり</span></td>
+          <td><span class="cross">あり</span></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </section>
 
