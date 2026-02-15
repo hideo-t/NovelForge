@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hideo-t.github.io/NovelForge/sitemap.xml
