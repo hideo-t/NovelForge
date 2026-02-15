@@ -607,7 +607,7 @@ footer{padding:28px;text-align:center;font-size:.72rem;color:var(--text2);border
   <p class="sub reveal d1">β版への参加申し込み、質問、なんでもどうぞ。<br>個人クリエイターの方を優先でご案内しています。</p>
   <div class="cta-btns reveal d2">
     <a href="https://forms.gle/vxeFuYFUSnSQSH4P9" target="_blank" rel="noopener" class="btn btn-ink">📩 フォームから申し込む</a>
-    <a href="/cdn-cgi/l/email-protection#b2d3d6dfdbdcf2c5d9d8c29cdcd7c6" class="btn btn-ghost">✉ <span class="__cf_email__" data-cfemail="3a5b5e5753547a4d51504a14545f4e">[email&#160;protected]</span> にメール</a>
+    <a href="mailto:admin@wkjp.net" class="btn btn-ghost">✉ admin@wkjp.net にメール</a>
   </div>
   <div class="cta-cards reveal d3">
     <a href="https://forms.gle/vxeFuYFUSnSQSH4P9" target="_blank" rel="noopener" class="cta-card">
@@ -615,14 +615,14 @@ footer{padding:28px;text-align:center;font-size:.72rem;color:var(--text2);border
       <div class="cta-card-title">β版に参加したい</div>
       <div class="cta-card-desc">セットアップ支援付き。導入から最初の1作品生成まで一緒にやります。</div>
     </a>
-    <a href="/cdn-cgi/l/email-protection#7d1c191014133d0a16170d53131809" class="cta-card">
+    <a href="mailto:admin@wkjp.net" class="cta-card">
       <span class="cta-card-icon">💬</span>
       <div class="cta-card-title">まず質問したい</div>
       <div class="cta-card-desc">自分の環境で動くか、どんな作品が作れるか、気軽にご相談ください。</div>
     </a>
   </div>
   <div class="cta-mail reveal d4">
-    <p>メールでのお問い合わせ: <a href="/cdn-cgi/l/email-protection#6607020b0f0826110d0c1648080312"><span class="__cf_email__" data-cfemail="3352575e5a5d73445859431d5d5647">[email&#160;protected]</span></a></p>
+    <p>メールでのお問い合わせ: <a href="mailto:admin@wkjp.net">admin@wkjp.net</a></p>
   </div>
 </section>
 
@@ -630,12 +630,55 @@ footer{padding:28px;text-align:center;font-size:.72rem;color:var(--text2);border
   <p>© 2026 NovelForge — 完全ローカルAI小説生成パイプライン</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>50));
-document.querySelectorAll('.faq-q').forEach(q=>{
-  q.addEventListener('click',()=>{
-    const item=q.parentElement,a=item.querySelector('.faq-a'),wasOpen=item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open');i.
+<script>
+// Scroll reveal
+var obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) { e.target.classList.add('visible'); }
+  });
+}, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
+
+// Fallback
+setTimeout(function() {
+  document.querySelectorAll('.reveal:not(.visible)').forEach(function(el) {
+    el.classList.add('visible');
+  });
+}, 3000);
+
+// Nav scroll
+var nav = document.getElementById('nav');
+if (nav) {
+  window.addEventListener('scroll', function() {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+}
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+  a.addEventListener('click', function(e) {
+    var target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+});
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(function(q) {
+  q.addEventListener('click', function() {
+    var item = q.parentElement;
+    var a = item.querySelector('.faq-a');
+    var wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function(i) {
+      i.classList.remove('open');
+      var ia = i.querySelector('.faq-a');
+      if (ia) ia.style.maxHeight = null;
+    });
+    if (!wasOpen) {
+      item.classList.add('open');
+      a.style.maxHeight = a.scrollHeight + 'px';
+    }
+  });
+});
+</script>
+</body>
+</html>

@@ -649,10 +649,10 @@ footer{padding:20px 40px;text-align:center;font-size:.68rem;color:var(--text3);b
   </div>
   <div class="cta-btns reveal d2">
     <a href="https://forms.gle/vxeFuYFUSnSQSH4P9" target="_blank" rel="noopener" class="btn btn-white">Schedule a Call →</a>
-    <a href="/cdn-cgi/l/email-protection#5c3d383135321c2b37362c72323928" class="btn btn-wg">✉ <span class="__cf_email__" data-cfemail="18797c757176586f73726836767d6c">[email&#160;protected]</span></a>
+    <a href="mailto:admin@wkjp.net" class="btn btn-wg">✉ admin@wkjp.net</a>
   </div>
   <div class="cta-mail reveal d3">
-    <p>Direct: <a href="/cdn-cgi/l/email-protection#3051545d595e70475b5a401e5e5544"><span class="__cf_email__" data-cfemail="adccc9c0c4c3eddac6c7dd83c3c8d9">[email&#160;protected]</span></a></p>
+    <p>Direct: <a href="mailto:admin@wkjp.net">admin@wkjp.net</a></p>
   </div>
   <div class="disclaimer reveal d4">
     This page does not constitute a solicitation of investment. Market data is based on publicly available estimates and does not guarantee future performance. All investment decisions should be made at your own discretion. Confidential — for qualified investors, acquirers, and strategic partners only.
@@ -663,7 +663,37 @@ footer{padding:20px 40px;text-align:center;font-size:.68rem;color:var(--text3);b
   <p>© 2026 NovelForge — Confidential. For qualified parties only.</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.06,rootMargin:'0px 0px -20px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-const nav=document.ge
+<script>
+// Scroll reveal
+var obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) { e.target.classList.add('visible'); }
+  });
+}, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
+
+// Fallback
+setTimeout(function() {
+  document.querySelectorAll('.reveal:not(.visible)').forEach(function(el) {
+    el.classList.add('visible');
+  });
+}, 3000);
+
+// Nav scroll
+var nav = document.getElementById('nav');
+if (nav) {
+  window.addEventListener('scroll', function() {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+}
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+  a.addEventListener('click', function(e) {
+    var target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+});
+</script>
+</body>
+</html>

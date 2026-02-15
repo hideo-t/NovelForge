@@ -675,7 +675,7 @@ footer{padding:32px;text-align:center;font-size:.74rem;color:var(--text2);border
   <p class="sub reveal d1">御社の既存IPを使った生成デモをお見せします。<br>「うちのキャラでやるとどうなるか」をその場で確認できます。</p>
   <div class="cta-btns reveal d2">
     <a href="https://forms.gle/vxeFuYFUSnSQSH4P9" target="_blank" rel="noopener" class="btn btn-gold">📩 フォームからお問い合わせ</a>
-    <a href="/cdn-cgi/l/email-protection#c1a0a5aca8af81b6aaabb1efafa4b5" class="btn btn-ghost">✉ <span class="__cf_email__" data-cfemail="9bfafff6f2f5dbecf0f1ebb5f5feef">[email&#160;protected]</span> にメール</a>
+    <a href="mailto:admin@wkjp.net" class="btn btn-ghost">✉ admin@wkjp.net にメール</a>
   </div>
   <div class="cta-cards reveal d3">
     <a href="https://forms.gle/vxeFuYFUSnSQSH4P9" target="_blank" rel="noopener" class="cta-card" style="text-decoration:none;color:inherit">
@@ -683,14 +683,14 @@ footer{padding:32px;text-align:center;font-size:.74rem;color:var(--text2);border
       <div class="cta-card-title">出版社・ゲーム会社の方</div>
       <div class="cta-card-desc">既存IPのノベライズ・スピンオフ展開をAIで加速したい方。PoC構築から支援します。</div>
     </a>
-    <a href="/cdn-cgi/l/email-protection#3756535a5e5977405c5d4719595243" class="cta-card" style="text-decoration:none;color:inherit">
+    <a href="mailto:admin@wkjp.net" class="cta-card" style="text-decoration:none;color:inherit">
       <span class="cta-card-icon">🤝</span>
       <div class="cta-card-title">事業提携・投資のご相談</div>
       <div class="cta-card-desc">コンテンツ×AIの事業パートナーシップ、資本提携のご相談も承ります。</div>
     </a>
   </div>
   <div class="cta-contact-direct reveal d4">
-    <p>メールでのお問い合わせ: <a href="/cdn-cgi/l/email-protection#3e5f5a5357507e4955544e10505b4a" style="color:var(--gold);text-decoration:none;font-weight:600"><span class="__cf_email__" data-cfemail="7011141d191e30071b1a005e1e1504">[email&#160;protected]</span></a></p>
+    <p>メールでのお問い合わせ: <a href="mailto:admin@wkjp.net" style="color:var(--gold);text-decoration:none;font-weight:600">admin@wkjp.net</a></p>
   </div>
 </section>
 
@@ -698,24 +698,55 @@ footer{padding:32px;text-align:center;font-size:.74rem;color:var(--text2);border
   <p>© 2026 NovelForge — 完全ローカルAI小説生成パイプライン</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // Scroll reveal
-const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+var obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) { e.target.classList.add('visible'); }
+  });
+}, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
+
+// Fallback
+setTimeout(function() {
+  document.querySelectorAll('.reveal:not(.visible)').forEach(function(el) {
+    el.classList.add('visible');
+  });
+}, 3000);
 
 // Nav scroll
-const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>50));
+var nav = document.getElementById('nav');
+if (nav) {
+  window.addEventListener('scroll', function() {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+}
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+  a.addEventListener('click', function(e) {
+    var target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+});
 
 // FAQ accordion
-document.querySelectorAll('.faq-q').forEach(q=>{
-  q.addEventListener('click',()=>{
-    const item=q.parentElement;
-    const a=item.querySelector('.faq-a');
-    const wasOpen=item.classList.contains('open');
-    // Close all
-    document.querySelectorAll('.faq-item').forEach(i=>{
+document.querySelectorAll('.faq-q').forEach(function(q) {
+  q.addEventListener('click', function() {
+    var item = q.parentElement;
+    var a = item.querySelector('.faq-a');
+    var wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function(i) {
       i.classList.remove('open');
-      i.querySelector('.faq-a').style.maxHeight=null;
+      var ia = i.querySelector('.faq-a');
+      if (ia) ia.style.maxHeight = null;
     });
-   
+    if (!wasOpen) {
+      item.classList.add('open');
+      a.style.maxHeight = a.scrollHeight + 'px';
+    }
+  });
+});
+</script>
+</body>
+</html>

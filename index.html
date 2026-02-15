@@ -50,6 +50,9 @@ body::before{
 
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
 .reveal.visible{opacity:1;transform:translateY(0)}
+/* Fallback: if JS fails, content still shows after 2s */
+@keyframes revealFallback{to{opacity:1;transform:translateY(0)}}
+.no-js .reveal,.reveal-fallback{animation:revealFallback 0s 2s both}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
 @keyframes fadeSlide{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
@@ -759,7 +762,7 @@ footer{
 
   <div class="bcta-contact reveal d3">
     <a href="https://forms.gle/vxeFuYFUSnSQSH4P9" target="_blank" rel="noopener" class="btn btn-gold">📩 お問い合わせフォーム</a>
-    <a href="/cdn-cgi/l/email-protection#4021242d292e00372b2a306e2e2534" class="btn btn-ghost">✉ <span class="__cf_email__" data-cfemail="7716131a1e1937001c1d0759191203">[email&#160;protected]</span> にメール</a>
+    <a href="mailto:admin@wkjp.net" class="btn btn-ghost">✉ admin@wkjp.net にメール</a>
   </div>
   <div class="bcta-mail reveal d4">
     <p>どのプランが合うかわからない場合も、お気軽にご連絡ください。</p>
@@ -772,12 +775,42 @@ footer{
     <a href="creators/">クリエイター向け</a>
     <a href="education/">教育機関向け</a>
     <a href="https://forms.gle/vxeFuYFUSnSQSH4P9" target="_blank" rel="noopener">お問い合わせ</a>
-    <a href="/cdn-cgi/l/email-protection#18797c757176586f73726836767d6c"><span class="__cf_email__" data-cfemail="e9888d848087a99e828399c7878c9d">[email&#160;protected]</span></a>
+    <a href="mailto:admin@wkjp.net">admin@wkjp.net</a>
   </div>
   <p>© 2026 NovelForge — 完全ローカルAI小説生成パイプライン</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.06,rootMargin:'0px 0px -20px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-const nav=document.ge
+<script>
+// Scroll reveal
+var obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) { e.target.classList.add('visible'); }
+  });
+}, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
+
+// Fallback
+setTimeout(function() {
+  document.querySelectorAll('.reveal:not(.visible)').forEach(function(el) {
+    el.classList.add('visible');
+  });
+}, 3000);
+
+// Nav scroll
+var nav = document.getElementById('nav');
+if (nav) {
+  window.addEventListener('scroll', function() {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+}
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+  a.addEventListener('click', function(e) {
+    var target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+});
+</script>
+</body>
+</html>

@@ -597,10 +597,10 @@ footer{padding:24px 40px;text-align:center;font-size:.7rem;color:var(--text3);bo
   </div>
   <div class="deal-ctas reveal d2">
     <a href="https://forms.gle/vxeFuYFUSnSQSH4P9" target="_blank" rel="noopener" class="btn btn-white">面談を予約する →</a>
-    <a href="/cdn-cgi/l/email-protection#87e6e3eaeee9c7f0ecedf7a9e9e2f3" class="btn btn-wghost">✉ <span class="__cf_email__" data-cfemail="86e7e2ebefe8c6f1edecf6a8e8e3f2">[email&#160;protected]</span></a>
+    <a href="mailto:admin@wkjp.net" class="btn btn-wghost">✉ admin@wkjp.net</a>
   </div>
   <div class="deal-mail reveal d3">
-    <p>メール: <a href="/cdn-cgi/l/email-protection#751411181c1b35021e1f055b1b1001"><span class="__cf_email__" data-cfemail="254441484c4b65524e4f550b4b4051">[email&#160;protected]</span></a></p>
+    <p>メール: <a href="mailto:admin@wkjp.net">admin@wkjp.net</a></p>
   </div>
   <div class="deal-disclaimer reveal d4">
     本ページは投資勧誘を目的とするものではありません。記載の市場データは公開情報に基づく推定値であり、将来の業績を保証するものではありません。投資判断はご自身の責任において行ってください。
@@ -611,7 +611,37 @@ footer{padding:24px 40px;text-align:center;font-size:.7rem;color:var(--text3);bo
   <p>© 2026 NovelForge — Confidential. For qualified investors only.</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.06,rootMargin:'0px 0px -20px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-const nav=document.ge
+<script>
+// Scroll reveal
+var obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) { e.target.classList.add('visible'); }
+  });
+}, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
+
+// Fallback
+setTimeout(function() {
+  document.querySelectorAll('.reveal:not(.visible)').forEach(function(el) {
+    el.classList.add('visible');
+  });
+}, 3000);
+
+// Nav scroll
+var nav = document.getElementById('nav');
+if (nav) {
+  window.addEventListener('scroll', function() {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+}
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+  a.addEventListener('click', function(e) {
+    var target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+});
+</script>
+</body>
+</html>
