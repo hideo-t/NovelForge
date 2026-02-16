@@ -2,43 +2,43 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://hideo-t.github.io/NovelForge/</loc>
+    <loc>https://wkjp.ai/</loc>
     <lastmod>2026-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://hideo-t.github.io/NovelForge/enterprise/</loc>
+    <loc>https://wkjp.ai/enterprise/</loc>
     <lastmod>2026-02-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://hideo-t.github.io/NovelForge/creators/</loc>
+    <loc>https://wkjp.ai/creators/</loc>
     <lastmod>2026-02-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://hideo-t.github.io/NovelForge/education/</loc>
+    <loc>https://wkjp.ai/education/</loc>
     <lastmod>2026-02-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://hideo-t.github.io/NovelForge/investors/</loc>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://hideo-t.github.io/NovelForge/investors/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://hideo-t.github.io/NovelForge/investors/en/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://hideo-t.github.io/NovelForge/investors/" />
+    <loc>https://wkjp.ai/investors/</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wkjp.ai/investors/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://wkjp.ai/investors/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wkjp.ai/investors/" />
     <lastmod>2026-02-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hideo-t.github.io/NovelForge/investors/en/</loc>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://hideo-t.github.io/NovelForge/investors/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://hideo-t.github.io/NovelForge/investors/en/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://hideo-t.github.io/NovelForge/investors/" />
+    <loc>https://wkjp.ai/investors/en/</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wkjp.ai/investors/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://wkjp.ai/investors/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wkjp.ai/investors/" />
     <lastmod>2026-02-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
